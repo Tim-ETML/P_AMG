@@ -1,7 +1,7 @@
 <?php
 /**
- * Auteur : Bruno Grin
- * Date: 28.03.2022
+ * Auteur : Cindy Hardegger
+ * Date: 22.01.2019
  * Contrôleur principal
  */
 

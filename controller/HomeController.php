@@ -1,9 +1,9 @@
 <?php
 /**
  * ETML
- * Auteur : Bruno Grin
- * Date: 28.03.2022
- * Controler pour gérer les pages classiques
+ * Auteur : Jonathan Dale
+ * Date: 04.04.2022
+ * Controller gérant des pages d'accueil et autres pages "requises" dans un site
  */
 
 class HomeController extends Controller {

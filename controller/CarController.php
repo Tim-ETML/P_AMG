@@ -1,0 +1,23 @@
+<?php
+/**
+ * ETML
+ * Auteur : Cindy Hardegger
+ * Date: 22.01.2019
+ * Controler pour gérer les clients
+ */
+
+class CarController extends Controller {
+
+    /**
+     * Permet de choisir l'action à effectuer
+     *
+     * @return mixed
+     */
+    public function display() {
+
+        $action = $_GET['action'] . "Action";
+
+        // Appelle une méthode dans cette classe (ici, ce sera le nom + action (ex: listAction, detailAction, ...))
+        return call_user_func(array($this, $action));
+    }
+}

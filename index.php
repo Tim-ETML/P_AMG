@@ -2,35 +2,36 @@
 
 /**
  * ETML
- * Auteur :  Bruno Grin
- * Date: 28.03.2022
- * Site web en MVC et orienté objet
+ * Auteur :  Jonathan Dale
+ * Date: 01.04.2022
+ * Site web en MVC et orienté objet sur les Mercedes AMG
  */
 
 $debug = false;
 
+//activer le debugging
 if ($debug) {
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
-
 }
+
 date_default_timezone_set('Europe/Zurich');
 
 include_once 'controller/Controller.php';
 include_once 'controller/HomeController.php';
-include_once 'controller/CustomerController.php';
+include_once 'controller/CarController.php';
 
 
 class MainController {
 
     /**
-     * Permet de sélectionner le bon contrôler et l'action
+     * Permet de sélectionner le bon controller et l'action
      */
     public function dispatch() {
 
         if (!isset($_GET['controller'])) {
-            $_GET['controller'] = 'customer';
-            $_GET['action'] = 'list';
+            $_GET['controller'] = 'home';
+            $_GET['action'] = 'menu';
         }
 
 
@@ -51,7 +52,7 @@ class MainController {
                 $link = new HomeController();
                 break;
             case 'customer':
-                $link = new CustomerController();
+                $link = new CarController();
                 break;
             default:
                 $link = new HomeController();
