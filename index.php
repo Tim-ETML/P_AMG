@@ -31,7 +31,7 @@ class MainController {
 
         if (!isset($_GET['controller'])) {
             $_GET['controller'] = 'home';
-            $_GET['action'] = 'menu';
+            $_GET['action'] = 'index';
         }
 
 
