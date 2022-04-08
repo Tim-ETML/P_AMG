@@ -51,7 +51,7 @@ class MainController {
             case 'home':
                 $link = new HomeController();
                 break;
-            case 'customer':
+            case 'car':
                 $link = new CarController();
                 break;
             default:

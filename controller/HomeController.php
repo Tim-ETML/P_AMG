@@ -20,6 +20,7 @@ class HomeController extends Controller {
         return call_user_func(array($this, $action));
     }
 
+    
     /**
      * Display Index Action
      *

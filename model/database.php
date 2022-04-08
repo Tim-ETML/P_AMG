@@ -47,7 +47,7 @@ class Database
 	{
 		$req = $this->connector->prepare($query);
 		foreach ($binds as $bind) {
-			 $req->bindValue($bind[0], $bind[1], $bind[2]);
+			$req->bindValue($bind[0], $bind[1], $bind[2]);
 		}
 		$req->execute();
 		$result = $this->formatData($req);
@@ -65,19 +65,18 @@ class Database
 	//Get the number of cars contained in the database
 	public function getTotalNumOfCars()
 	{
-		return $this->querySimpleExecute("SELECT COUNT(*) FROM t_car;");
+		return ($this->querySimpleExecute("SELECT COUNT(*) FROM db_mercedesamg.t_car;"))[0]["COUNT(*)"];
 	}
 
 	//Function to get a specific number of cars starting from an index
-	public function getCarsFromIndex($idStart, $numOfCars)
+	public function getCarsFromIndex($idStart)
 	{
 		$countOfCars = $this->getTotalNumOfCars();
-		$carsToCount = $idStart + $numOfCars - $countOfCars;
-		$carData = array();
-		for($i = 0; $i < $carsToCount; $i++){
-			$car = $this->querySimpleExecute("SELECT carName, carModel, carPrice, carIsElectric FROM db_mercedesamg.t_car WHERE idCar = $i");
-			array_push($carData, $car);
-		}
+		$carData = [];
+			for ($i = $idStart; $i < $idStart + 5; $i++) {
+				$car = $this->querySimpleExecute("SELECT carName, carModel, carPrice, carIsElectric FROM db_mercedesamg.t_car WHERE idCar = $i");
+				$carData[$i] = $car
+			}
 		return $carData;
 	}
 }
