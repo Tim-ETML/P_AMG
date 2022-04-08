@@ -18,4 +18,15 @@ abstract class Controller {
 
         $this->$page();
     }
+
+    private function listAction() {
+
+        $view = file_get_contents('view/page/car/list.php');
+
+        ob_start();
+        eval('?>' . $view);
+        $content = ob_get_clean();
+
+        return $content;
+    }
 }
