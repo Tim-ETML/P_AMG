@@ -74,7 +74,7 @@ class Database
 		$countOfCars = $this->getTotalNumOfCars();
 		$carData = [];
 		for ($i = $idStart; $i < $idStart + 5; $i++) {
-			$car = $this->querySimpleExecute("SELECT carModel, carPrice, carEngineHorsePower, carMaxSpeed, carZeroToHundredKM FROM db_mercedesamg.t_car WHERE idCar = $i");
+			$car = $this->querySimpleExecute("SELECT idCar, carModel, carPrice, carEngineHorsePower, carMaxSpeed, carZeroToHundredKM FROM db_mercedesamg.t_car WHERE idCar = $i");
 			$carData[$i] = $car;
 		}
 		return $carData;
