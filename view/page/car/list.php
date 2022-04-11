@@ -29,8 +29,7 @@
 							<p class=\"card-text\">Price is $price CHF, it has $hp horse power with a max speed of $max, and goes from 0 to 100km in $zeroToHundred seconds</p>
 							<div class=\"d-flex justify-content-between align-items-center\">
 							  <div class=\"btn-group\">
-								<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">View</button>
-								<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">Edit</button>
+								<a href=\"index.php?controller=car&action=detail&idCar=$id\" class=\"btn btn-sm btn-outline-secondary\">Details</a>
 							  </div>
 							</div>
 						  </div>

@@ -32,4 +32,14 @@ class CarController extends Controller {
         return $content;
     }
 
+    private function detailAction(){
+        $view = file_get_contents(dirname(__FILE__) .'\..\view\page\car\detail.php');
+
+        ob_start();
+        eval('?>' . $view);
+        $content = ob_get_clean();
+
+        return $content;
+    }
+
 }

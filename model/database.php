@@ -71,12 +71,25 @@ class Database
 	//Function to get a specific number of cars starting from an index
 	public function getCarsFromIndex($idStart)
 	{
-		$countOfCars = $this->getTotalNumOfCars();
-		$carData = [];
-		for ($i = $idStart; $i < $idStart + 5; $i++) {
-			$car = $this->querySimpleExecute("SELECT idCar, carModel, carPrice, carEngineHorsePower, carMaxSpeed, carZeroToHundredKM FROM db_mercedesamg.t_car WHERE idCar = $i");
-			$carData[$i] = $car;
+		if (is_numeric($idStart)) {
+			$countOfCars = $this->getTotalNumOfCars();
+			$carData = [];
+			for ($i = $idStart; $i < $idStart + 5; $i++) {
+				$car = $this->queryPrepareExecute("SELECT idCar, carModel, carPrice, carEngineHorsePower, carMaxSpeed,
+				carZeroToHundredKM FROM db_mercedesamg.t_car WHERE idCar = :id", array(array(":id", $i, PDO::PARAM_INT)));
+				$carData[$i] = $car;
+			}
+			return $carData;
 		}
-		return $carData;
+	}
+
+	//Function to retrieve all information about a specific car
+	public function getOneCar($idCar)
+	{
+		$car = $this->queryPrepareExecute("SELECT idCar, carModel, carBodywork, carNumberDoors, carNumberOfSeats,
+		carConsumptionPerHundred, carDimension, carEngineCubicSize, carNbEngineCylinder, carEngineHorsePower,
+		carCouple, carMaxSpeed, carZeroToHundredKM, carWeight, carPrice, carMark, carDescription FROM db_mercedesamg.t_car WHERE idCar = :id",
+		array(array(":id", $idCar, PDO::PARAM_INT)));
+		return $car;
 	}
 }
