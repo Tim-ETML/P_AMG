@@ -8,13 +8,32 @@
 			$carIndex = $_GET["carIndex"];
 			$database = new Database();
 			$cars = $database->getCarsFromIndex($carIndex);
+			var_dump($cars);
 			foreach ($cars as $car) {
 				if ($car) {
 					foreach ($car as $carData) {
+						$name = $carData["carModel"];
 						$price = $carData["carPrice"];
-						echo "<div>
-						<h1>$price CHF</h1>
-						</div>";
+						$hp = $carData["carEngineHorsePower"];
+						$max = $carData["carMaxSpeed"];
+						$zeroToHundred = $carData["carZeroToHundredKM"];
+						echo "<div class=\"col-md-4\">
+						<div class=\"card mb-4 box-shadow\">
+							<div class=\"card-body d-flex justify-content-center\">
+								<h5 class=\"card-title\">$name</h5>
+							</div>
+						  <img class=\"card-img-top\" src=\"https://th.bing.com/th/id/OIP.2d-hU9pNGQO1XwGgoJhhCAHaE8?pid=ImgDet&rs=1\">
+						  <div class=\"card-body\">
+							<p class=\"card-text\">Price is $price CHF, it has $hp horse power with a max speed of $max, and goes from 0 to 100km in $zeroToHundred seconds</p>
+							<div class=\"d-flex justify-content-between align-items-center\">
+							  <div class=\"btn-group\">
+								<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">View</button>
+								<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">Edit</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>";
 					}//foreach ($car as $carData)
 				}//if ($car)
 			}//foreach ($cars as $car)
